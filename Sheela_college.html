@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+       
+
+        header h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #0073e6;
+        }
+
+        .ug-dropdown, .pg-dropdown {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .ug-link:hover .ug-dropdown {
+            display: block;
+        }
+
+        .pg-link:hover .pg-dropdown {
+            display: block;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        section h2 {
+            font-size: 24px;
+        }
+
+        section ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        header h1 {
+            font-size: 48px;
+            color: #e63a00;
+        }
+
+        .dropdown-content {
+            background-color: #333;
+        }
+
+        .bsc-link a, .msc-link a {
+            color: red; /* Make "BSc" and "MSc" links red */
+        }
+
+        .dropdown-content a {
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 48px;
+            color: #0073e6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our College</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li class="courses-link dropdown">
+                <a href="#">Courses</a>
+                <div class="dropdown-content">
+                    <div class="ug-link dropdown">
+                        <a href="#">UG</a>
+                        <div class="ug-dropdown">
+                            <a href="#">B.sc</a>
+                            <a href="#">BBA</a>
+                            <a href="#">B.A</a>
+                            <a href="#">B.Com</a>
+                            <a href="#">BCA</a>
+                        </div>
+                    </div>
+                    <div class="pg-link dropdown">
+                        <a href="#">PG</a>
+                        <div class="pg-dropdown">
+                            <a href="#">M.Sc</a>
+                            <a href="#">M.Com</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="events-link"><a href="#">Events</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <!-- Add the image below the links -->
+        <img class="home-image" src="college_image.jpg" alt="college Image" width="1800" height="600">
+
+    </nav>
+
+    <section class="content-area">
+        <h2>Contact Information</h2>
+        <p>
+            Address: 123 College Street, City, Country<br>
+            Phone: +123 456 789<br>
+            Email: info@college.edu
+        </p>
+    </section>
+
+    <!-- Event content initially hidden -->
+    <section class="event-content" style="display: none;">
+        <h2>Event</h2>
+        <h3>Fire safety awareness</h3>
+        <img src="fire_safety.jpg" alt="Fire safety" width="800" height="500">
+        <p>The programme was conduct to create awareness about fire safety and the usage
+             of fire extinguishing equipment by the Fire Service Department from Vanur.
+              300 students and 28 faculties were participated in this programme</p>
+        <h3>Pongal celebration</h3>
+        <img src="pongal_.jpg" alt="pongal" width="800" height="500">
+        <p>The students of Rajeswari College Celebrated Pongal in a grand manner on 09th January,
+             2023. The celebration of the harvest festival “Thamizhar Thirunaal” included cultural
+              programmes like folk songs, karagaattam, etc.,. Each department students prepared 
+              their own delicious sweet pongal in earthen pots and offered their prayers to sun god..</p>
+    </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const eventsLink = document.querySelector(".events-link");
+            const contentArea = document.querySelector(".content-area");
+            const eventContent = document.querySelector(".event-content");
+            const homeImage = document.querySelector(".home-image");
+
+            let previousContent = contentArea.innerHTML;
+
+            eventsLink.addEventListener("click", function (e) {
+                e.preventDefault();
+                homeImage.style.display = "none";
+                contentArea.style.display = "none";
+                eventContent.style.display = "block";
+            });
+
+            const homeLink = document.querySelector("li:first-child a");
+            const coursesLink = document.querySelector(".courses-link a");
+            const contactLink = document.querySelector("li:last-child a");
+            
+            homeLink.addEventListener("click", function (e) {
+                e.preventDefault();
+                homeImage.style.display = "block";
+                eventContent.style.display = "none";
+                contentArea.style.display = "block";
+            });
+
+            coursesLink.addEventListener("click", function (e) {
+                e.preventDefault();
+                homeImage.style.display = "block";
+                eventContent.style.display = "none";
+                contentArea.style.display = "block";
+            });
+
+            contactLink.addEventListener("click", function (e) {
+                e.preventDefault();
+                homeImage.style.display = "block";
+                eventContent.style.display = "none";
+                contentArea.style.display = "block";
+            });
+        });
+    </script>
+</body>
+</html>
